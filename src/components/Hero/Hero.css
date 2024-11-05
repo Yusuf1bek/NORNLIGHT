@@ -1,0 +1,23 @@
+@media screen and (max-width: 400px) {
+    .hero-1 {
+        width: 390px;
+    }
+    .hero-2 {
+        flex-direction: column-reverse ;
+        gap: 20px;
+    }
+    .hero-3{
+        width: 230px;
+    }
+    .hero-3 h2{
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .hero-img{
+        width: 270px;
+        height: 270px;
+    }
+    .hero-4{
+        padding: 0;
+    }
+}

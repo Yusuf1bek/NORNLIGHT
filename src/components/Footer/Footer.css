@@ -1,0 +1,14 @@
+@media screen and (max-width: 400px) {
+    .footer-1{
+        flex-direction: column;
+        gap: 30px;
+        padding: 10px;
+    }
+    .footer-2{
+        width: 390px;
+    }
+    .footer-3{
+        flex-direction: column;
+        gap: 30px;
+    }
+}

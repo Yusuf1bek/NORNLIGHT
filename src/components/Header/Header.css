@@ -1,0 +1,39 @@
+@media screen and (max-width: 400px) {
+    .header-1 {
+        display: none;
+    }
+    .header-2 {
+        width: 200px;
+        flex-direction: column;
+    }
+    .header-btn{
+        display: none;
+    }
+    .header-inp{
+        padding-right: 161px;
+        padding-left: 10px;
+        margin-left: 167px;
+    }
+    .header-img{
+        display: none;
+    }
+    .header-btn-2{
+        display: none;
+    }
+    .header-btn-1{
+        position: absolute;
+        top: 12px;
+        right: 85px;
+    }
+    .header-btn-1 span{
+        display: none;
+    }
+    .header-btn-3 span{
+        display: none;
+    }
+    .header-btn-3{
+        position: absolute;
+        top: 10px;
+        right: 33px;
+    }
+  }
