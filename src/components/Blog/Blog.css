@@ -1,0 +1,13 @@
+@media screen and (max-width: 400px) {
+    .blog-btn {
+        display: none;
+    }
+    .blog-1{
+        width: 1200px;
+        padding: 0 380px;
+    }
+    .blog-3{
+        display: flex;
+        flex-direction: column;
+    }
+}

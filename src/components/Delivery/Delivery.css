@@ -1,0 +1,13 @@
+@media screen and (max-width: 400px) {
+    .delivery-1{
+        display: flex;
+        flex-direction: column;
+    }
+    .delivery-2{
+        width: 1200px;
+        padding: 0 300px;
+    }
+    .delivery-3{
+        width: 1200px;
+    }
+}

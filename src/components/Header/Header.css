@@ -1,18 +1,15 @@
 @media screen and (max-width: 400px) {
     .header-1 {
         display: none;
+        width: 0;
     }
     .header-2 {
-        width: 200px;
         flex-direction: column;
+        display: flex;
+        flex: 1;
     }
     .header-btn{
         display: none;
-    }
-    .header-inp{
-        padding-right: 161px;
-        padding-left: 10px;
-        margin-left: 167px;
     }
     .header-img{
         display: none;
@@ -22,8 +19,8 @@
     }
     .header-btn-1{
         position: absolute;
-        top: 12px;
-        right: 85px;
+        top: 17px;
+        right: -430px;
     }
     .header-btn-1 span{
         display: none;
@@ -33,7 +30,10 @@
     }
     .header-btn-3{
         position: absolute;
-        top: 10px;
-        right: 33px;
+        top: 15px;
+        right: -490px;
+    }
+    .header-logo{
+        margin-right: 400px;
     }
   }

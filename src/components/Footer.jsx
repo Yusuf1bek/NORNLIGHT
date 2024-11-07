@@ -5,7 +5,7 @@ import "../components/Footer/Footer.css"
 
 const Footer = () => {
   return (
-    <div className='w-[1440px] bg-[#F2F2F2] m-auto mt-[100px] footer-2'>
+    <div className='w-full bg-[#F2F2F2] m-auto mt-[100px] footer-2'>
     <div className='w-[1300px] pt-[100px] m-auto '>
         <ul className='flex items-start gap-[220px] footer-1'>
             <li className='flex flex-col items-start  gap-[10px]'>
@@ -50,4 +50,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default React.memo(Footer)

@@ -11,11 +11,11 @@ import "../components/Header/Header.css"
 const Header = () => {
     const itemsHeader = headerItems?.map((item, inx)=> (
         <li key={inx}>
-            <NavLink>{item}</NavLink>
+            <NavLink to={item}>{item}</NavLink>
         </li>
     ))
   return (
-    <div className='max-w-[1310px] py-[12px] m-auto mb-[80px] '>
+    <div className='w-[1310px] py-[12px] m-auto mb-[80px] header-wrapper'>
         <div className='flex items-center justify-between mb-[31px] header-1'>
             <ul className='flex items-center gap-[25px]'>
                 {itemsHeader}
@@ -26,8 +26,8 @@ const Header = () => {
                 </div>
         </div>
         <div className='flex items-center gap-[30px] header-2'>
-            <Link>
-                <img src={logoIcon} alt="Icon-Logo" width={207} height={35}/>
+            <Link to={"/"}>
+                <img className='header-logo' src={logoIcon} alt="Icon-Logo" width={207} height={35}/>
             </Link>
             <button className='w-[120px] py-[8px] border-none bg-[#454545] text-[#FFFFFF] rounded-[44px] ml-[20px] header-btn'>
                 Каталог
@@ -55,4 +55,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default React.memo(Header)

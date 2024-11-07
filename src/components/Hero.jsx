@@ -1,6 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import heroImg from "../assets/images/hero-img.png"
@@ -11,12 +11,40 @@ const Hero = () => {
     <div className='w-[1414px]  m-auto bg-[#F2F2F2] rounded-[22px] hero-1'>
         <Swiper
         spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper h-[500px]"
       >
+        <SwiperSlide className='px-[130px] hero-4'>
+            <div className='flex items-center gap-[290px] relative hero-2'>
+                <div className='w-[395px] hero-3'>
+                    <h2 className='font-[700] text-[60px] leading-[70px] mt-[40px] text-[#454545]'>
+                        Скидка 15% на все подвесные светильники  
+                        <span className='bg-[#454545] text-[#FFFFFF] rounded-[24px]'>  до 5 февраля</span>
+                    </h2>
+                </div>
+                    <img className=' hero-img' src={heroImg} alt="Hero-Img" width={450} height={450} />
+            </div>
+        </SwiperSlide>
+        <SwiperSlide className='px-[130px] hero-4'>
+            <div className='flex items-center gap-[290px] relative hero-2'>
+                <div className='w-[395px] hero-3'>
+                    <h2 className='font-[700] text-[60px] leading-[70px] mt-[40px] text-[#454545]'>
+                        Скидка 15% на все подвесные светильники  
+                        <span className='bg-[#454545] text-[#FFFFFF] rounded-[24px]'>  до 5 февраля</span>
+                    </h2>
+                </div>
+                    <img className=' hero-img' src={heroImg} alt="Hero-Img" width={450} height={450} />
+            </div>
+        </SwiperSlide>
         <SwiperSlide className='px-[130px] hero-4'>
             <div className='flex items-center gap-[290px] relative hero-2'>
                 <div className='w-[395px] hero-3'>
@@ -33,4 +61,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default React.memo(Hero)
