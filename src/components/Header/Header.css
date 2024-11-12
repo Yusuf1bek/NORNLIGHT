@@ -11,6 +11,10 @@
     .header-btn{
         display: none;
     }
+    .header-logo{
+        width: 500px;
+        margin-left: 20px;
+    }
     .header-img{
         display: none;
     }
@@ -33,7 +37,12 @@
         top: 15px;
         right: -490px;
     }
-    .header-logo{
-        margin-right: 400px;
+    .header-wrapper{
+        width: 300px;
+        margin: 0 auto;
+    }
+    .header-inp{
+        margin-left: 710px;
+        font-size: 50px;
     }
   }

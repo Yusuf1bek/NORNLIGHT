@@ -1,0 +1,28 @@
+.model_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #0009;
+    z-index: 100;
+}
+
+.model_content {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: #fff;
+    z-index: 101;
+    opacity: 0;
+    animation: model 0.5s forwards;
+}
+
+@keyframes model {
+    to {
+        top: 50%;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}

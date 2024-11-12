@@ -8,7 +8,7 @@ import "../components/Hero/Hero.css"
 
 const Hero = () => {
   return (
-    <div className='w-[1414px]  m-auto bg-[#F2F2F2] rounded-[22px] hero-1'>
+    <div className='w-[1414px]  m-auto bg-[#F2F2F2] rounded-[22px] hero-wrapper'>
         <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -21,12 +21,12 @@ const Hero = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper h-[500px]"
+        className="mySwipers h-[500px]"
       >
         <SwiperSlide className='px-[130px] hero-4'>
             <div className='flex items-center gap-[290px] relative hero-2'>
                 <div className='w-[395px] hero-3'>
-                    <h2 className='font-[700] text-[60px] leading-[70px] mt-[40px] text-[#454545]'>
+                    <h2 className='font-[700] text-[60px] hero-title leading-[70px] mt-[40px] text-[#454545]'>
                         Скидка 15% на все подвесные светильники  
                         <span className='bg-[#454545] text-[#FFFFFF] rounded-[24px]'>  до 5 февраля</span>
                     </h2>
@@ -37,7 +37,7 @@ const Hero = () => {
         <SwiperSlide className='px-[130px] hero-4'>
             <div className='flex items-center gap-[290px] relative hero-2'>
                 <div className='w-[395px] hero-3'>
-                    <h2 className='font-[700] text-[60px] leading-[70px] mt-[40px] text-[#454545]'>
+                    <h2 className='font-[700] text-[60px] hero-title leading-[70px] mt-[40px] text-[#454545]'>
                         Скидка 15% на все подвесные светильники  
                         <span className='bg-[#454545] text-[#FFFFFF] rounded-[24px]'>  до 5 февраля</span>
                     </h2>
@@ -48,7 +48,7 @@ const Hero = () => {
         <SwiperSlide className='px-[130px] hero-4'>
             <div className='flex items-center gap-[290px] relative hero-2'>
                 <div className='w-[395px] hero-3'>
-                    <h2 className='font-[700] text-[60px] leading-[70px] mt-[40px] text-[#454545]'>
+                    <h2 className='font-[700] text-[60px] hero-title leading-[70px] mt-[40px] text-[#454545]'>
                         Скидка 15% на все подвесные светильники  
                         <span className='bg-[#454545] text-[#FFFFFF] rounded-[24px]'>  до 5 февраля</span>
                     </h2>
