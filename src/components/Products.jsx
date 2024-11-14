@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AllowRight from "../assets/images/allow-right.svg";
 import { useFetch } from '../hooks/useFetch';
 import cartWhite from "../assets/images/cart-white.svg";
-import likeIng from "../assets/images/like.svg";
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../components/Modal';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,15 +9,19 @@ import 'swiper/css';
 import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
-import numberBrm from 'number-brm';
 import { IoIosClose } from "react-icons/io";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useStateValue } from '../context';
+import numberBrm from 'number-brm';
 
-const Products = () => {
-  const navigate = useNavigate()
+const Products = ({data}) => {
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  }, [])
+  const [state, dispatch] = useStateValue();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const { data } = useFetch("/products");
-
   const handleImageClick = (item) => {
     setSelectedItem(item);
     setShow(true);
@@ -34,9 +37,15 @@ const Products = () => {
         width={173}
         height={216}
       />
-      <img className='absolute top-0 right-[55px]' src={likeIng} alt="Like" />
+      <button onClick={() => dispatch({ type: "ADD_WISHLIST", payload: item })}>
+        {state.wishlist?.some(i => i.id === item.id) ? (
+          <FaHeart className='absolute top-0 right-[55px]  text-red-500' />
+        ) : (
+          <FaRegHeart className='absolute top-0 right-[55px]' />
+        )}
+      </button>
       <Link to={`/product/${item.id}`}>
-        <h2 className='font-[500] text-[20px] leading-[22px] mb-[24px]'>{item.title}</h2>
+        <h2 className='font-[500] text-[20px] leading-[22px] mb-[40px]'>{item.title}</h2>
       </Link>
       <div className='flex items-center gap-[116px]'>
         <div className='flex flex-col'>
@@ -58,21 +67,14 @@ const Products = () => {
 
   return (
     <div className='w-[1310px] py-[100px] m-auto'>
-      <div className='flex items-center justify-between mb-[53px]'>
-        <h1 className='font-[700] text-[40px] leading-[54px] catalog-title'>Популярные товары</h1>
-        <button className='blog-btn flex items-center gap-[10px] border-[1px] border-[#454545] text-[#454545] rounded-[20px] w-[200px] py-[10px] pl-[45px]'>
-          Все товары
-          <img src={AllowRight} alt="Allow-right" />
-        </button>
-      </div>
       <ul className='flex flex-wrap items-center '>
         {ProductItem}
       </ul>
       {show && selectedItem && (
         <Modal onClose={() => setShow(false)}>
-            <button onClick={() => setShow(false)}>
-            <IoIosClose className='text-[50px]'/>
-            </button>
+          <button onClick={() => setShow(false)}>
+            <IoIosClose className='text-[50px]' />
+          </button>
           <Swiper
             effect="flip"
             grabCursor={true}

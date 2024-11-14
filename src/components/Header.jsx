@@ -37,10 +37,12 @@ const Header = () => {
                 <img className='absolute left-[580px] bottom-[12px] header-img' src={loupeIng} alt="Loupe-Img" width={16} height={16}/>
             </form>
             <div className='flex items-center gap-[30px]'>
-                <div className='flex flex-col items-center header-btn-1'>
-                    <img src={likeIng} alt="liek-img" width={24} height={24}/>
-                    <span>Избранное</span>
-                </div>
+                <Link to={"/wishlist"}>
+                    <div className='flex flex-col items-center header-btn-1'>
+                        <img src={likeIng} alt="liek-img" width={24} height={24}/>
+                        <span>Избранное</span>
+                    </div>
+                </Link>
                 <div className='flex flex-col items-center header-btn-2'>
                     <img src={compareIng} alt="compare-img" width={24} height={24}/>
                     <span>Сравнение</span>
