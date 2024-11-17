@@ -12,6 +12,7 @@ import Mainblog from '../pages/Blog/Mainblog'
 import Notfound from '../pages/Not-Found/Notfound'
 import Detail from '../pages/Detail/Detail'
 import Wishlist from '../components/Wishlist'
+import Cartlist from '../components/Cartlist'
 
 const Router = () => {
   return (
@@ -26,6 +27,7 @@ const Router = () => {
             <Route path='/Контакты' element={<Contacts/>} />
             <Route path='/Блог' element={<Mainblog/>} />
             <Route path='/wishlist' element={<Wishlist/>} />
+            <Route path='/cartlist' element={<Cartlist/>} />
             <Route path='*' element={<Notfound/>} />
             <Route path='/product/:id' element={<Detail/>} />
         </Routes>

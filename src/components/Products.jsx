@@ -58,7 +58,9 @@ const Products = ({data}) => {
             {(item.newPrice.brm())} ₽
           </strong>
         </div>
-        <button className='w-[55px] py-[5px] px-[20px] bg-[#454545] rounded-2xl'>
+        <button 
+          onClick={()=> dispatch({type: "ADD_CART", payload: item})}
+          className='w-[55px] py-[5px] px-[20px] bg-[#454545] rounded-2xl'>
           <img src={cartWhite} alt="Cart" />
         </button>
       </div>

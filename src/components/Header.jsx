@@ -47,10 +47,12 @@ const Header = () => {
                     <img src={compareIng} alt="compare-img" width={24} height={24}/>
                     <span>Сравнение</span>
                 </div>
-                <div className='flex flex-col items-center header-btn-3'>
-                    <img src={cartIng} alt="cart-img" width={24} height={24}/>
-                    <span>Корзина</span>
-                </div>
+                <Link to={"/cartlist"}>
+                    <div className='flex flex-col items-center header-btn-3'>
+                        <img src={cartIng} alt="cart-img" width={24} height={24}/>
+                        <span>Корзина</span>
+                    </div>
+                </Link>
             </div>
         </div>
     </div>
