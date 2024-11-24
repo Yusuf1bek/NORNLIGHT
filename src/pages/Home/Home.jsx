@@ -7,13 +7,9 @@ import Blog from '../../components/Brends'
 import Brends from '../../components/Blog'
 import Production from '../../components/Production'
 import axios from 'axios'
+import { useFetch } from '../../hooks/useFetch'
 const Home = () => {
-  const [data, setData] = useState(null)
-  useEffect(()=>{
-    axios
-    .get("https://672fb37a66e42ceaf15e7a34.mockapi.io/products")
-    .then(res => setData(res.data))
-  }, [])
+  const {data} = useFetch("products")
   return (
     <div>
       <Hero/>

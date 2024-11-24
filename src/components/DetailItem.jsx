@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
-import likeIng from "../assets/images/like.svg"
 import okeIcon from "../assets/images/oke-icon.svg"
 import wkIcon from "../assets/images/wk-icon.svg"
 import telegramIcon from "../assets/images/telegram-icon.svg"
 import watsUpIcon from "../assets/images/watsup-icon.svg"
 import messengerIcon from "../assets/images/messenger-icon.svg"
+import { useStateValue } from '../context'
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const DetailItem = () => {
+  
+  const [state, dispatch] = useStateValue();
   useEffect(()=>{
     window.scrollTo(0, 0)
   }, [])
-    const {id} = useParams()
-    const {data} = useFetch(`/products/${id}`)
-    const [count, setCount] = useState(0)
-
-    const inc = ()=>{
-        setCount(count + 1)
+  const {id} = useParams()
+  const {data} = useFetch(`/products/${id}`)
+  const [count, setCount] = useState(0)
+  let amount = state?.cart?.find(item => item.id === id)?.amount
+  const decrement = (data) => {
+    if(amount >= 1){
+      dispatch({type:"DEC_CART", payload: data })
+    }else{
+      dispatch({type:"DELETE_CART", payload: data })
     }
-    const deInc = ()=>{
-      setCount(count - 1)
-  }
+}
+
   return (
     <div className='w-[1300px] py-[100px] m-auto'>
       <div className='flex items-center justify-between mb-[180px]'>
@@ -43,19 +48,37 @@ const DetailItem = () => {
         </div>
       </div>
           <div className='flex gap-[16px] items-center mb-[40px]'>
-            <strong className='font-[500] text-[40px] leading-[64px]'>{data?.newPrice.brm()} ₽</strong>
-            <strong className='font-[500] text-[18px] leading-[28px] text-[#B3B3B3] line-through'>{data?.oldPrice.brm()} ₽</strong>
+            <strong className='font-[500] text-[40px] leading-[64px]'>{data?.newPrice} ₽</strong>
+            <strong className='font-[500] text-[18px] leading-[28px] text-[#B3B3B3] line-through'>{data?.oldPrice} ₽</strong>
           </div>
           <p className='font-[400] text-[16px] leading-[25px] mb-[48px]'>{data?.description}</p>
           <div className='flex items-center gap-[16px]'>
-            <div className='flex items-center gap-[32px] w-[132px] border-[1px] border-[#E5E5E5] rounded-lg py-[10px] pl-[20px] pr-[10px] font-[500] text-[16px] leading-[19px]'>
-              <button onClick={deInc}>-</button>
-              <span>{count}</span>
-              <button onClick={inc}>+</button>
+              {
+                state?.cart?.some(item => item.id === id) 
+                ?
+              <div className='flex items-center gap-[32px] w-[132px] border-[1px] border-[#E5E5E5] rounded-lg py-[10px] pl-[20px] pr-[10px] font-[500] text-[16px] leading-[19px]'>
+                <button onClick={()=> decrement(data)}>-</button>
+                <span>
+                  {
+                    amount
+                  }
+                  </span>
+                <button onClick={()=> dispatch({type:"ADD__CART", payload: data })}>+</button>
+              </div>
+                :
+                <button 
+                onClick={()=> dispatch({type:"ADD__CART", payload: data })}
+                className='w-[180px] py-[10px] bg-[#454545] text-white rounded-lg'>В корзину</button>
+              }
+              <button onClick={()=> dispatch({type: "ADD_WISHLIST", payload: data })}>
+                {
+                  state?.wishlist?.some(item => item.id === id) ?
+                  <FaHeart className='text-[22px] text-red-500'/>
+                  :
+                  <FaRegHeart className='text-[22px]'/>
+                }
+              </button>
             </div>
-            <button className='w-[180px] py-[10px] bg-[#454545] text-white rounded-lg'>В корзину</button>
-            <img src={likeIng} alt="" />
-          </div>
         </div>
       </div>
       <div>

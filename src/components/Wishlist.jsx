@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import Products from './Products';
 import { useStateValue } from '../context';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaAngleRight } from 'react-icons/fa';
 
 const Wishlist = () => {
     useEffect(()=>{
@@ -18,7 +19,19 @@ const Wishlist = () => {
           <button className='w-[250px] py-[10px] bg-[#454545] text-[20px] text-white rounded-lg mr-[50px]' onClick={()=> navigate("/")}>Популярные товары</button>
         </div>
       ) : (
-        <>
+        <>  
+            <div className="mb-5 flex gap-3">
+              <Link to={"/"} className="flex items-center text-[#A2A2A2]">
+                Главная
+              </Link>
+              <Link className="flex items-center text-[#A2A2A2] gap-4">
+                <FaAngleRight /> Каталог
+              </Link>
+              <span className="flex items-center gap-3 text-[#000] font-semibold cursor-pointer">
+                <FaAngleRight />
+                Избранное
+              </span>
+            </div>
             <div>
                 <h2 className='font-[700] text-[64px] leading-[70px]'>Избранные товары</h2>
             </div>

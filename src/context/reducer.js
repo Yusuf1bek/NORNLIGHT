@@ -1,6 +1,8 @@
 export const initialState = JSON.parse(localStorage.getItem("storage")) || {
     wishlist: [],
-    cart: []
+    cart: [],
+    token: null,
+    reload: false
   };
   
   export const reducer = (state, action) => {
@@ -15,24 +17,20 @@ export const initialState = JSON.parse(localStorage.getItem("storage")) || {
         }
         localStorage.setItem("storage", JSON.stringify(result));
         return result;
-        case "ADD_CART":
-          const cart = Array.isArray(state.cart) ? state.cart : [];
-          let cartIndex = cart.findIndex(item => item.id === action.payload.id);
-          if (cartIndex < 0) {
-            result = { 
-              ...state, 
-              cart: [...cart, { ...action.payload, amount: 1 }]
-            };
-          } else {
-            result = {
-              ...state,
-              cart: cart.map((item, index) =>
-                index === cartIndex ? { ...item, amount: item.amount + 1 } : item
-              )
-            };
-          }
-          localStorage.setItem("storage", JSON.stringify(result));
-          return result;
+        case "ADD__CART":
+            let cartIndex = state.cart?.findIndex(pro => pro.id === action.payload.id)
+            if(cartIndex < 0){
+                result = {...state, cart: [...state.cart, {...action.payload, amount: 1}]}
+                localStorage.setItem("storage", JSON.stringify(result))
+                return result
+            }
+            else{
+                result = {...state, cart: state.cart?.map((pro, inx) => (
+                    cartIndex === inx ? {...pro, amount: pro.amount + 1} : pro
+                ))}
+                localStorage.setItem("storage", JSON.stringify(result))
+                return result
+            }
         case "DEC_CART":
           let decIndex = state.cart.findIndex(item => item.id === action.payload.id)
           result = {...state, cart: state.cart.map((item, inx) => (
@@ -48,6 +46,12 @@ export const initialState = JSON.parse(localStorage.getItem("storage")) || {
           result = {...state, cart: []}
           localStorage.setItem("storage", JSON.stringify(result))
           return result
+        case "ADD_TOKEN":
+          result = {...state, token: action.payload }
+          localStorage.setItem("storage", JSON.stringify(result))
+          return result
+          case "RELOAD":
+            return { ...state, reload: !state.reload };
       default:
         return state;
     }

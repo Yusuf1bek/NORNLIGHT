@@ -1,0 +1,9 @@
+.container__person{
+    max-width: 1348px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+.active_bg.active{
+    background-color: #6A6A6A;
+}
